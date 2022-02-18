@@ -1,0 +1,1071 @@
+/*
+    Template Name: Cleaning Services
+    Template Author: Cleaning Service Inc.
+
+    GLOBAL COLORS: 
+    1. Blue: #009BE3;
+    2. Dark Blue: #006ABD;
+
+*/
+
+
+/* ====== GLOBAL STYLES ======= */
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Sofia Pro', sans-serif;
+    overflow-x: hidden;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Montserrat', sans-serif;
+    ;
+}
+*/
+
+p {
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+/* ===== UTILITY CLASSES =====*/
+
+
+.custom-checkbox input {
+    padding: 0;
+    height: initial;
+    width: initial;
+    margin-bottom: 0;
+    display: none;
+    cursor: pointer;
+}
+
+.custom-checkbox label {
+    position: relative;
+    cursor: pointer;
+}
+
+.custom-checkbox label:before {
+    content: '';
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: 2px solid #787878;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+    padding: 8px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-right: 5px;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+
+.custom-checkbox input:checked+label:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 7px;
+    width: 6px;
+    height: 12px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.custom-checkbox input:checked+label:before {
+    background-color: #006ABD;
+    border: 2px solid #006ABD;
+}
+
+/* DROPDOWN */
+.dropdown-wrap .dropdown-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.7rem 1.1rem;
+}
+
+.dropdown-wrap .dropdown-box,
+.dropdown-empty .dropdown-box {
+    border: 0.5px solid #a8a8a8;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+
+.dropdown-empty .dropdown-box {
+    padding: 0.7rem 0.4rem;
+}
+
+.dropdown-wrap .dropdown-title,
+.dropdown-empty .dropdown-empty-title {
+    margin-bottom: 0.5rem;
+    color: #505050;
+}
+
+.dropdown-wrap .dropdown-title-black,
+.dropdown-empty .dropdown-title-black {
+    color: #000;
+}
+
+.dropdown-empty .dropdown-box input {
+    width: 100%;
+    border: 0;
+}
+
+.dropdown-empty .dropdown-box input:focus {
+    outline: 0
+}
+
+.dropdown-box .dropdown-inner-title {
+    color: #505050;
+}
+
+.collapseIcon {
+    cursor: pointer;
+}
+
+/*  ===============================================
+                      HEADER
+    =============================================== */
+
+.header {
+    background: url('../img/header-bg.png') no-repeat center center/cover fixed;
+    height: 95vh;
+    position: relative;
+    color: #fff;
+}
+
+.header .header-container {
+    height: 100%;
+}
+
+.logo-nav-wrap .site-logo img {
+    max-width: 150px;
+    min-width: 100px;
+}
+
+/* CENTER CONTENT */
+.header .center-content {
+    margin-top: -2rem;
+    display: flex;
+    align-items: center;
+    height: calc(100% - 114px);
+}
+
+.center-content .center-content-inner {
+    width: 70%;
+}
+
+.center-content .center-content-inner div {
+    margin-bottom: 1rem;
+}
+
+.center-content .center-content-head p {
+    font-size: 1.5rem;
+}
+
+.center-content .center-content-head h3 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.center-content .center-content-desc p {
+    width: 60%;
+    line-height: 25.79px;
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+.center-content-btn .btn-head {
+    margin-top: 1rem;
+    display: inline-block;
+    color: #fff;
+    background-color: #009be3;
+    padding: 1rem 5rem;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+
+/* =============================================================
+                        CUSTOMIZE
+   ============================================================ */
+
+.customize .customize-content-box {
+    padding: 4rem 0;
+}
+
+.customize .customize-content h3 {
+    text-align: center;
+    color: #006ABD;
+    font-weight: 700;
+}
+
+/* =============================================================
+                        HOUSE PLANS
+   ============================================================ */
+
+.house-plans {
+    background: url('../img/plans/house-plans.png') no-repeat center center/cover;
+}
+
+.plans-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 4rem 0 6rem;
+}
+
+.house-plans .plans-head {
+    color: #fff;
+    text-align: center;
+}
+
+.plans-head h3 {
+    font-weight: 600;
+    font-size: 2.3;
+}
+
+.plans-head p {
+    font-weight: 300;
+    margin: 1.5rem 0 3rem;
+}
+
+/* PLANS BODY */
+.plans-body {
+    overflow: hidden;
+    background: #fff;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+
+.plans-card-head {
+    background: #D8F3FF;
+    padding: 1.4rem 0;
+}
+
+.plans-card-head h3 {
+    font-size: 1.1rem;
+    text-align: center;
+    color: #006ABD;
+    margin: 0;
+}
+
+.plans-card-body {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.plans-price-list .plans-price {
+    padding: 0 0 1rem 0;
+    text-align: center;
+    color: #006ABD;
+    font-weight: 700;
+}
+
+.plans-price-list .plans-price span:first-child {
+    font-size: 2rem;
+}
+
+.plans-price-list span:last-child {
+    font-size: 3.3rem;
+}
+
+.plans-list .plans-list-item {
+    display: flex;
+    align-items: flex-start;
+}
+
+.plans-list-item .plans-list-icon {
+    margin-top: -0.3rem;
+}
+
+.plans-list-item {
+    margin-bottom: 1rem;
+}
+
+.plans-list-item p {
+    margin-top: -0.1rem;
+    padding-left: 1rem;
+    font-size: 0.9rem;
+}
+
+.plans-list-item p.p-grey {
+    color: #a8a8a8;
+}
+
+.plans-btn a {
+    background: #006ABD;
+    text-align: center;
+    padding: 0.5rem 0;
+    color: #fff;
+    display: block;
+    font-weight: 300;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+
+.plans-shadow {
+    box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* ========================================
+                ROOF PLANS
+   ======================================== */
+
+.roof-plans .roof-plans-box {
+    padding: 1rem 0;
+}
+
+.roof-plans .plans-head {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.roof-plans .plans-head h3 {
+    color: #006ABD;
+    font-weight: 700;
+}
+
+/* ========================================
+                DRIVE PLANS
+   ======================================== */
+
+.drive-plans {
+    background: url('../img/plans/driveway-plans.png') no-repeat center center/cover;
+}
+
+.drive-plans .plans-head {
+    color: #fff;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+
+/* ========================================
+                   VISIT
+   ======================================== */
+
+.visit {
+    position: relative;
+}
+
+.visit .visit-box {
+    padding: 7rem 0;
+}
+
+.visit .visit-content {
+    padding-left: 0.9rem;
+}
+
+.visit-content .visit-content-head {
+    margin-bottom: 1rem;
+}
+
+.visit-content .visit-content-head h3 {
+    font-weight: 700;
+    font-size: 2.3;
+    color: #006ABD;
+}
+
+.visit-content-body p {
+    color: #505050;
+    font-weight: 400;
+}
+
+.visit-content .visit-content-body p:nth-child(2) {
+    margin: 1rem 0;
+}
+
+.visit-content .visit-content-foot {
+    width: 80%;
+}
+
+.visit-content-foot .content-foot-info-wrap {
+    margin-top: 1.3rem;
+    display: flex;
+}
+
+.visit-content-foot .content-foot-info {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    padding: 0.7rem 0.8rem;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    margin-bottom: 0.8rem;
+}
+
+.visit-content-foot .content-foot-info .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    background-color: #fff;
+}
+
+.visit-content-foot .content-foot-info p {
+    font-size: 1rem;
+    font-weight: 300;
+    padding-left: 0.5rem;
+}
+
+.visit-content-foot .content-foot-info.email {
+    background-color: #219653;
+    margin-right: 0.8rem;
+}
+
+.visit-content-foot .content-foot-info.phone {
+    background-color: #006ABD;
+    width: 100%;
+}
+
+.visit-content-foot .content-foot-disclaimer {
+    display: flex;
+    align-items: center;
+    background: #926767;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    color: #fff;
+    padding: 0.5rem 0.8rem;
+}
+
+.content-foot-disclaimer .text {
+    padding-left: 1rem;
+}
+
+.content-foot-disclaimer .text h3 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.content-foot-disclaimer .text p {
+    font-size: 0.9rem;
+    font-weight: 700;
+    font-weight: 300;
+}
+
+.visit-shape {
+    position: absolute;
+    top: -3.4rem;
+    left: 0;
+    z-index: -99;
+}
+
+/* ========================================
+                   CONFIRMATION
+   ======================================== */
+
+.confirmation .confirmation-content {
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    overflow: hidden;
+}
+
+.confirmation-content .confirmation-head {
+    padding: 0.9rem;
+    text-align: center;
+    color: #fff;
+    background: #009be3;
+}
+
+.confirmation-head h3 {
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.confirmation .confirmation-body {
+    padding: 1.4rem 4rem 2.4rem;
+    background-color: #eefaff;
+}
+
+.confirmation-body .choose {
+    color: #505050;
+    font-size: 1.2rem;
+    margin-left: -0.7rem;
+    margin-bottom: 1rem;
+}
+
+.confirmation-body .confirm-content-head {
+    background-color: #F0F0F0;
+    padding: 1rem;
+}
+
+.confirmation-body .title {
+    font-size: 0.9rem;
+    padding-left: 2rem;
+}
+
+.confirmation-body .title h3 {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #505050;
+    margin: 0;
+}
+
+.confirm-content-body .confirm-content-item {
+    padding: 1rem;
+    background-color: #fff;
+}
+
+.confirm-content-body .confirm-content-item:not(:last-child) {
+    border-bottom: 0.5px solid #e2e1e1;
+}
+
+.confirm-content-body .confirm-content-item p {
+    font-size: 0.93rem;
+    color: #505050;
+    font-weight: 400;
+}
+
+.confirm-content-body .confirm-content-item p.p-blue,
+.confirm-content-body .confirm-content-item h3.h-blue {
+    color: #009be3;
+}
+
+.confirm-content-body .confirm-content-item h3.total {
+    font-size: 1.5rem;
+}
+
+/* =============================================
+                   SIGNATURE
+   ============================================= */
+
+.signature .signature-box {
+    padding: 4rem 0;
+}
+
+.signature .signature-content p {
+    color: #505050;
+    margin-bottom: 0.7rem;
+}
+
+.signature-content .signature-content-inner {
+    display: flex;
+}
+
+.signature-content-inner .signature-input {
+    flex: 1;
+    margin-right: 0.7rem;
+}
+
+.signature-content-inner .signature-input form {
+    height: 100%;
+}
+
+.signature-content-inner .signature-input input {
+    width: 100%;
+    border: 1px solid #a8a8a8;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    height: 100%;
+}
+
+.signature-content-inner .signature-input input:focus {
+    outline: 0;
+    border: 1px solid #0692a7;
+}
+
+.signature-btn button {
+    border: 0;
+    padding: 1.5rem 2rem;
+    border-radius: 6px;
+    background-color: #006ABD;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+/* =============================================
+                    FOOTER
+   ============================================= */
+
+.footer {
+    background-color: #006ABD;
+    color: #fff;
+    padding: 2rem 0;
+}
+
+.footer .nav-icon {
+    display: flex;
+    margin-bottom: 5rem;
+}
+
+.footer .nav {
+    flex: 1;
+}
+
+.footer .nav-icon ul {
+    display: flex;
+}
+
+.footer .nav-icon ul li {
+    margin-right: 5rem;
+}
+
+.footer .nav-icon ul li a {
+    color: #fff;
+    font-weight: 300;
+}
+
+.footer .nav-icon .icons {
+    display: flex;
+}
+
+.footer .nav-icon .icons .icon {
+    margin-left: 1rem;
+}
+
+.footer .copyright {
+    text-align: center;
+}
+
+.footer .copyright p {
+    font-weight: 300;
+}
+
+/* ========================================================================
+                                QUOTE PAGE
+   ======================================================================== */
+
+.quote .quote-container {
+    max-width: 900px;
+    margin: 4rem auto;
+}
+
+.quote .quote-content {
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    overflow: hidden;
+}
+
+/* QUOTE CONTENT HEAD */
+
+.quote-content .instant-quote {
+    background-color: #006ABD;
+    text-align: center;
+    color: #fff;
+    padding: 1.5rem 0;
+}
+
+.instant-quote h3 {
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.instant-quote p {
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+/* QUOTE CONTENT BODY */
+
+.quote-content-body {
+    background-color: #f9f9f9;
+    padding: 0 4rem;
+    margin-bottom: 4rem;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.quote-content-body .quote-content-box.video-box {
+    padding-top: 2.3rem;
+}
+
+.quote-content-body .quote-content-box {
+    padding-bottom: 2.3rem;
+}
+
+.quote-content .quote-inner-head {
+    background-color: #E1F6FF;
+    padding: 1.1rem 2rem;
+}
+
+.quote-content .quote-inner-head-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.quote-inner-head h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #006ABD;
+}
+
+.quote-content .quote-inner-body {
+    background-color: #fff;
+    padding: 2rem;
+}
+
+.quote-content .quote-inner-body-pad {
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+/* ===============================================
+                   SERVICES
+   =============================================== */
+
+.services .quote-inner-body [class*='col-'] {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.services .services-box {
+    padding: 1rem 0.2rem;
+    background-color: #f0f0f0;
+    position: relative;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    max-height: 167px;
+    min-height: 167px;
+}
+
+.services-box .checkbox-input {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.7rem;
+}
+
+.service-box-img-name {
+    text-align: center;
+}
+
+.service-box-img-name .service-box-img {
+    margin-bottom: 0.7rem;
+}
+
+.service-box-img-name .service-box-img img {
+    max-width: 70px;
+    min-width: 70px;
+    min-height: 70px;
+    max-height: 70px;
+}
+
+.service-box-name p {
+    font-size: 0.9rem;
+}
+
+/* ===============================================
+                 PROPERTY INFORMATION
+   =============================================== */
+
+.property .property-title {
+    margin: 1rem 0;
+    color: #505050;
+}
+
+.property-info .range-btn-box {
+    display: flex;
+}
+
+.range-btn-box .range-box {
+    margin-left: 0.8rem;
+    flex: 1;
+}
+
+/* ===============================================
+                 HOUSE WASH
+   =============================================== */
+
+.house-wash-checkbox.custom-checkbox label {
+    color: #505050;
+}
+
+.house-wash-checkbox.custom-checkbox label:before {
+    margin-right: 1.5rem;
+}
+
+.house-wash-checkbox.custom-checkbox input:checked+label:before {
+    background-color: #505050;
+    border: 2px solid #505050;
+}
+
+.house-wash [class*='col-'] {
+    margin-bottom: 0.8rem;
+}
+
+
+/* ===============================================
+                  ROOF CLEAN
+   =============================================== */
+
+.roof-clean .roof-clean-content {
+    margin-top: 2rem;
+}
+
+.roof-clean .roof-clean-content p {
+    color: #505050;
+    margin-bottom: 0.8rem;
+}
+
+.roof-clean-content .roof-clean-btns {
+    display: flex;
+}
+
+.roof-clean-btns .roof-clean-btn:first-child {
+    margin-right: 3rem;
+}
+
+.roof-clean-btns .roof-clean-btn label {
+    margin-left: 1rem;
+}
+
+/* ===============================================
+                  DRIVEWAY OPTION
+   =============================================== */
+
+.driveway .driveway-option-list {
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+
+.driveway .driveway-row {
+    display: flex;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem 1.5rem 0;
+}
+
+.driveway-row .driveway-dropdown {
+    flex: 1;
+    margin-right: 1.4rem;
+}
+
+.driveway-row .driveway-dropdown .form-control {
+    height: calc(2.25rem + 13px);
+}
+
+.driveway .driveway-option .driveway-option-btn {
+    background-color: #219653;
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    height: 48px;
+    width: 100%;
+    font-weight: 300;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.driveway-option .driveway-option-btn .icon-text {
+    margin-bottom: -1px;
+    display: flex;
+    align-items: center;
+}
+
+.driveway-option-btn .icon-text span:first-child {
+    height: 30px;
+    padding-right: 0.5rem;
+}
+
+.driveway-option-btn .icon-text span:last-child {
+    margin-bottom: -2px;
+    height: 30px;
+}
+
+.driveway-list-content .driveway-list .driveway-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.3rem 1.5rem;
+    border-top: 0.5px solid #D0D0D0;
+}
+
+.driveway-list-content .driveway-list .driveway-item .driveway-icon {
+    cursor: pointer;
+}
+
+
+.driveway-item .driveway-text {
+    color: #505050;
+}
+
+/* CONCRETE */
+
+.driveway .driveway-info-item,
+.driveway .driveway-concrete {
+    padding-top: 2.2rem;
+}
+
+.driveway .concrete-content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: #505050;
+}
+
+/* DRIVEWAY INFO */
+
+.driveway-info-btn-box {
+    display: flex;
+}
+
+.driveway-info-btn-box .driveway-info-box {
+    margin-left: 0.8rem;
+    flex: 1;
+}
+
+.driveway-info-item .driveway-info-item-head h3 {
+    color: #009BE3;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.driveway-info-item .driveway-info-item-head p {
+    color: #505050;
+    font-size: 1.1rem;
+    margin-bottom: 1.3rem;
+}
+
+/* ===============================================
+                       CONTACT
+   =============================================== */
+.contact .contact-form label {
+    color: #505050;
+}
+
+.contact .contact-form .contact-col:nth-child(odd) {
+    padding-right: 0;
+}
+
+.contact .contact-form .form-control {
+    height: calc(2.8rem + 2px);
+}
+
+/* ===============================================
+                       NOTE
+   =============================================== */
+
+.note .note-form textarea {
+    border: 0;
+}
+
+
+/* ===============================================
+                       GET QUOTE
+   =============================================== */
+
+.get-quote {
+    padding-bottom: 2.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.get-quote .get-quote-inner {
+    text-align: center;
+}
+
+.get-quote .get-quote-inner .get-quote-btn {
+    margin-bottom: 1rem;
+}
+
+.get-quote-inner .get-quote-btn button {
+    border: 0;
+    background-color: #006ABD;
+    color: #fff;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    padding: 0.8rem 4.5rem;
+    cursor: pointer;
+}
+
+.get-quote-inner .get-quote-btn button:focus {
+    outline: 0;
+}

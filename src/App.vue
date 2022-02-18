@@ -1,28 +1,30 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/quote">Quote</router-link>
+    </div>
+     <router-view />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  
+   @import url('http://fonts.cdnfonts.com/css/sofia-pro?styles=17636,17637,17640,17632,17634,17638,17628,17626');
+
+   @import './assets/fonts/font-awesome/css/all.min.css';
+
+   @import './assets/css/bootstrap/bootstrap.min.css';
+   @import './assets/css/style.css';
+
 </style>
+
+
+
+
