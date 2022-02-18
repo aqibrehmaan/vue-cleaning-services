@@ -61,7 +61,6 @@
                         </div>
                     </div>
                     <!-- SERVICES ENDS -->
-                    {{ form }}
                   <template v-if="form.checkedServices.length > 0">
                     <!-- <template v-if="true"> -->
                     <!-- PROPERTY INFORMATION -->
