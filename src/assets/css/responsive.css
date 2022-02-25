@@ -1,0 +1,155 @@
+@media(max-width: 992px) {}
+
+@media(max-width: 768px) {
+
+    /* ========================================================================
+                                HOME PAGE
+   ======================================================================== */
+
+    .center-content .center-content-inner {
+        width: 100%;
+    }
+
+    .center-content .center-content-desc p {
+        width: 100%;
+    }
+
+    .house-plans .plans-head {
+        padding: 1rem;
+    }
+
+    .home-row-sm {
+        padding: 1rem;
+    }
+
+    .visit-content .visit-content-foot {
+        width: 100%;
+    }
+
+    .visit-content-foot .content-foot-info-wrap {
+        flex-direction: column;
+    }
+
+    .visit-content-foot .content-foot-info.email {
+        margin-right: 0;
+    }
+
+    .confirmation-body .confirm-content-head {
+        padding: 0.5rem;
+    }
+
+    .confirmation-body .title h3 {
+        font-size: 0.8rem;
+    }
+
+    .confirmation-body .title h3 .title-min {
+        font-size: 0.7rem;
+    }
+
+    .confirm-content-body .confirm-content-item {
+        padding: 1rem 0.3rem;
+    }
+
+    .confirmation .confirmation-body {
+        padding: 1rem;
+    }
+
+    .confirmation-body .choose {
+        font-size: 1rem;
+    }
+
+    .confirmation-body .title {
+        padding-right: 10px;
+        padding-left: 0;
+    }
+
+    .confirm-content-body .confirm-content-item h3.total {
+        font-size: 1rem;
+    }
+
+    .footer .nav-icon ul li {
+        margin-right: 3rem;
+    }
+
+    /* ========================================================================
+                                QUOTE PAGE
+   ======================================================================== */
+    .driveway-row {
+        flex-direction: column;
+    }
+
+    .driveway-row .driveway-dropdown {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .quote-mb-sm-1 {
+        margin-bottom: 0.5rem;
+    }
+
+
+
+}
+
+@media(max-width: 576px) {
+
+    /* ========================================================================
+                                HOME PAGE
+   ======================================================================== */
+    .center-content .center-content-head p {
+        font-size: 1rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .center-content .center-content-head h3 {
+        font-size: 2rem;
+    }
+
+    .center-content .center-content-desc p {
+        font-size: 1rem;
+    }
+
+    .customize .customize-content h3 {
+        line-height: 38px;
+    }
+
+    .signature-btn button {
+        padding: 1rem 0.5rem;
+    }
+
+    .dialog {
+        width: 100%;
+    }
+
+    .footer .nav-icon ul {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    /* ========================================================================
+                                QUOTE PAGE
+   ======================================================================== */
+
+    /* QUOTE CONTENT HEAD */
+    .quote-content .instant-quote {
+        padding: 1rem;
+    }
+
+    .instant-quote h3 {
+        font-size: 1.5rem;
+    }
+
+    .instant-quote p {
+        font-size: 0.86rem;
+    }
+
+    /* QUOTE CONTENT BODY */
+    .quote-content-body {
+        padding: 0 1rem;
+    }
+
+    .driveway-info-item .driveway-info-item-head p {
+        font-size: 0.9rem;
+    }
+
+}

@@ -2,14 +2,16 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../pages/Home.vue'
 import Quote from '../pages/Quote.vue'
+import Success from '../pages/Success.vue'
+import NotFound from '../pages/NotFound.vue';
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: Home
+    name: 'quote',
+    component: Quote
   },
 //   {
 //     path: '/services',
@@ -20,10 +22,16 @@ const routes = [
 //     component: () => import(/* webpackChunkName: "about" */ '../pages/Services.vue')
 //   }
 {
-    path: '/quote',
-    name: 'quote',
-    component: Quote
+    path: '/pricing',
+    name: 'home',
+    component: Home
   },
+  {
+    path: '/success',
+    name: 'success',
+    component: Success
+  },
+  { path: '/:notFound(.*)', component: NotFound }
 ]
 
 const router = new VueRouter({
@@ -34,9 +42,9 @@ const router = new VueRouter({
     if (savedPosition) {
       return savedPosition
     } else {
-      if(from.name == 'quote' && to.name == 'home') {
+      if(to.hash) {
         return { 
-          el: '#house-plans',
+          selector: to.hash,
           behavior: 'smooth'
         }
       }

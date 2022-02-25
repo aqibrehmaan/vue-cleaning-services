@@ -35,7 +35,7 @@
                             </div>
                             <div class="quote-inner-body">
                                 <div class="row">
-                                    <div class="col-3" v-for="service in services" :key="service.id">
+                                    <div class="col-6 col-md-3 quote-mb-1" v-for="service in services" :key="service.id">
                                         <div class="services-box">
                                             <div class="checkbox-input custom-checkbox">
                                                 <input type="checkbox" v-model="form.checkedServices"
@@ -62,7 +62,6 @@
                     </div>
                     <!-- SERVICES ENDS -->
                   <template v-if="form.checkedServices.length > 0">
-                    <!-- <template v-if="true"> -->
                     <!-- PROPERTY INFORMATION -->
                     <div class="property">
                         <div class="quote-content-box">
@@ -79,7 +78,7 @@
                             </div>
                             <div class="quote-inner-body">
                                 <div class="row">
-                                    <div class="col-5">
+                                    <div class="col-12 col-md-5">
                                         <div class="dropdown-wrap">
                         
                                             <div class="form-group">
@@ -115,7 +114,7 @@
                                                     outer-class="col-12"
                                                     wrapper-class="range-btn-box d-block"
                                                     element-class="row"
-                                                    input-class="col-6 d-flex"
+                                                    input-class="col-12 col-md-6 d-flex quote-mb-sm-1"
                                                     error-class="quote-invalid-error"
                                                     validation="required"
                                                     :validation-messages="{
@@ -123,7 +122,7 @@
                                                     }"
                                                  />
                                             
-                                             <div class="col-6">
+                                             <div class="col-12 col-md-6">
                                                   <FormulateInput
                                                 v-if="form.houseSquareFootageVal === 'knowActualRange'"
                                                 v-model="form.houseSquareFootageKnow"
@@ -141,7 +140,7 @@
                                               />
                                              </div>
                                          
-                                             <div class="col-6">
+                                             <div class="col-12 col-md-6">
                                                   <FormulateInput
                                                 v-if="form.houseSquareFootageVal === 'dontKnowActualRange'"
                                                 v-model="form.houseSquareFootageDontKnow"
@@ -191,7 +190,7 @@
                                             v-model="form.houseWash"
                                             validation="required|min:1"
                                             element-class="row"
-                                            input-class="col-3"
+                                            input-class="col-6 col-sm-4 col-md-3"
                                             error-class="quote-invalid-error"
                                             :options="houseWashData"
                                             :validation-messages="{
@@ -224,7 +223,7 @@
                             </div>
                             <div class="quote-inner-body">
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6">
                                         <div class="roof-clean dropdown-wrap">
         
                                             <div class="form-group">
@@ -246,7 +245,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6">
                                         <div class="roof-clean dropdown-wrap">
                                             <FormulateInput
                                                     v-model="form.roof.describeYourRoof"
@@ -291,8 +290,7 @@
                  </template>
                  
                   <template v-if="checkServiceInclude(10)">
-                <!-- <template v-if="true"> -->
-                        <!-- DRIVEWAY -->
+                  <!-- DRIVEWAY -->
                   <div class="driveway">
                         <div class="quote-content-box">
                             <div class="quote-inner-head quote-inner-head-flex">
@@ -376,12 +374,12 @@
                                 <!-- CONCRETE -->
                                 <div class="driveway-concrete">
                                     <div class="row">
-                                        <div class="col-7 concrete-col">
+                                        <div class="col-12 col-md-7 concrete-col">
                                             <div class="concrete-content">
                                                 <p>How would you rate the condition of your concrete?</p>
                                             </div>
                                         </div>
-                                        <div class="col-5">
+                                        <div class="col-12 col-md-5">
                                             <div class="concrete-dropdown dropdown-wrap">
                                                  <FormulateInput
                                                     v-model="form.driveway.concreteConditionRate"
@@ -423,7 +421,7 @@
                                                     outer-class="col-12"
                                                     wrapper-class="range-btn-box d-block"
                                                     element-class="row"
-                                                    input-class="col-6 d-flex"
+                                                    input-class="col-12 col-md-6 d-flex quote-mb-sm-1"
                                                     error-class="quote-invalid-error"
                                                     validation="required"
                                                     :validation-messages="{
@@ -431,7 +429,7 @@
                                                     }"
                                                  />
                                             
-                                             <div class="col-6">
+                                             <div class="col-12 col-md-6">
                                                 <FormulateInput
                                                 v-if="form.driveway.car2DrivewayVal === 'knowCar2Range'"
                                                 v-model="form.driveway.car2DrivewayKnow"
@@ -449,7 +447,7 @@
                                               />
                                              </div>
                                              
-                                             <div class="col-6">
+                                             <div class="col-12 col-md-6">
                                                   <FormulateInput
                                                 v-if="form.driveway.car2DrivewayVal === 'dontKnowCar2Range'"
                                                 v-model="form.driveway.car2DrivewayDontKnow"
@@ -489,7 +487,7 @@
                                                     outer-class="col-12"
                                                     wrapper-class="range-btn-box d-block"
                                                     element-class="row"
-                                                    input-class="col-6 d-flex"
+                                                    input-class="col-12 col-md-6 d-flex quote-mb-sm-1"
                                                     error-class="quote-invalid-error"
                                                     validation="required"
                                                     :validation-messages="{
@@ -497,7 +495,7 @@
                                                     }"
                                                  />
                                             
-                                             <div class="col-6">
+                                             <div class="col-12 col-md-6">
                                                 <FormulateInput
                                                 v-if="form.driveway.car3DrivewayVal === 'knowCar3Range'"
                                                 v-model="form.driveway.car3DrivewayKnow"
@@ -515,7 +513,7 @@
                                               />
                                              </div>
                                              
-                                             <div class="col-6">
+                                             <div class="col-12 col-md-6">
                                                   <FormulateInput
                                                 v-if="form.driveway.car3DrivewayVal === 'dontKnowCar3Range'"
                                                 v-model="form.driveway.car3DrivewayDontKnow"
@@ -555,7 +553,7 @@
                                                     @input="changeCircularDriveway"
                                                     wrapper-class="range-btn-box d-block"
                                                     element-class="row"
-                                                    input-class="col-6 d-flex"
+                                                    input-class="col-12 col-md-6 d-flex quote-mb-sm-1"
                                                     error-class="quote-invalid-error"
                                                     validation="required"
                                                     :validation-messages="{
@@ -563,7 +561,7 @@
                                                     }"
                                                  />
                                             
-                                             <div class="col-6">
+                                             <div class="col-12 col-md-6">
                                                 <FormulateInput
                                                 v-if="form.driveway.circularDrivewayVal === 'knowCircularRange'"
                                                 v-model="form.driveway.circularDrivewayKnow"
@@ -581,7 +579,7 @@
                                               />
                                              </div>
                                              
-                                             <div class="col-6">
+                                             <div class="col-12 col-md-6">
                                                   <FormulateInput
                                                 v-if="form.driveway.circularDrivewayVal === 'dontKnowCircularRange'"
                                                 v-model="form.driveway.circularDrivewayDontKnow"
@@ -651,7 +649,7 @@
                                                     outer-class="col-12"
                                                     wrapper-class="range-btn-box d-block"
                                                     element-class="row"
-                                                    input-class="col-6 d-flex"
+                                                    input-class="col-12 col-md-6 mb-1 d-flex"
                                                     error-class="quote-invalid-error"
                                                     validation="required"
                                                     :validation-messages="{
@@ -680,7 +678,7 @@
                                                     outer-class="col-12"
                                                     wrapper-class="range-btn-box d-block"
                                                     element-class="row"
-                                                    input-class="col-6 d-flex"
+                                                    input-class="col-12 col-md-6 d-flex quote-mb-sm-1"
                                                     error-class="quote-invalid-error"
                                                     validation="required"
                                                     :validation-messages="{
@@ -688,7 +686,7 @@
                                                     }"
                                                  />
                                             
-                                             <div class="col-6">
+                                             <div class="col-12 col-md-6">
                                                 <FormulateInput
                                                 v-if="form.driveway.backPorchVal === 'knowBackPorchRange'"
                                                 v-model="form.driveway.backPorchKnow"
@@ -706,7 +704,7 @@
                                               />
                                              </div>
                                              
-                                             <div class="col-6">
+                                             <div class="col-12 col-md-6">
                                                   <FormulateInput
                                                 v-if="form.driveway.backPorchVal === 'dontKnowBackPorchRange'"
                                                 v-model="form.driveway.backPorchDontKnow"
@@ -746,7 +744,7 @@
                                                     outer-class="col-12"
                                                     wrapper-class="range-btn-box d-block"
                                                     element-class="row"
-                                                    input-class="col-6 d-flex"
+                                                    input-class="col-12 col-md-6 d-flex quote-mb-sm-1"
                                                     error-class="quote-invalid-error"
                                                     validation="required"
                                                     :validation-messages="{
@@ -754,7 +752,7 @@
                                                     }"
                                                  />
                                             
-                                             <div class="col-6">
+                                             <div class="col-12 col-md-6">
                                                 <FormulateInput
                                                 v-if="form.driveway.poolDeckVal === 'knowPoolDeckRange'"
                                                 v-model="form.driveway.poolDeckKnow"
@@ -772,7 +770,7 @@
                                               />
                                              </div>
                                              
-                                             <div class="col-6">
+                                             <div class="col-12 col-md-6">
                                                   <FormulateInput
                                                 v-if="form.driveway.poolDeckVal === 'dontKnowPoolDeckRange'"
                                                 v-model="form.driveway.poolDeckDontKnow"
@@ -820,7 +818,7 @@
                             <div class="quote-inner-body">
             
                                     <div class="row">
-                                        <div class="col-6 contact-col">
+                                        <div class="col-12 col-md-6 contact-col">
                                             <div class="form-group">
                 
                                                 <FormulateInput
@@ -838,7 +836,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-6 contact-col">
+                                        <div class="col-12 col-md-6 contact-col">
                                             <div class="form-group">
                                                 <FormulateInput
                                                     v-model="form.contact.last_name"
@@ -854,7 +852,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-6 contact-col">
+                                        <div class="col-12 col-md-6 contact-col">
                                             <div class="form-group">
                                                <FormulateInput
                                                     v-model="form.contact.phone_number"
@@ -870,7 +868,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-6 contact-col">
+                                        <div class="col-12 col-md-6 contact-col">
                                             <div class="form-group">
                                                 <FormulateInput
                                                     v-model="form.contact.email"
@@ -887,7 +885,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-6 contact-col">
+                                        <div class="col-12 col-md-6 contact-col">
                                             <div class="form-group">
                                                 <FormulateInput
                                                     v-model="form.contact.street_address"
@@ -903,7 +901,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-6 contact-col">
+                                        <div class="col-12 col-md-6 contact-col">
                                             <div class="form-group">
                                                  <FormulateInput
                                                     v-model="form.contact.zip_code"
@@ -920,7 +918,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-6 contact-col">
+                                        <div class="col-12 col-md-6 contact-col">
                                             <div class="form-group">
                                                 <FormulateInput
                                                     v-model="form.contact.state"
@@ -939,7 +937,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-6 contact-col">
+                                        <div class="col-12 col-md-6 contact-col">
                                             <div class="form-group">
                                                 <FormulateInput
                                                     v-model="form.contact.city"
@@ -1000,7 +998,6 @@
                 <div class="get-quote">
                         <div class="get-quote-inner">
                             <div class="get-quote-btn">
-                                <!-- <button>Get the Quote</button> -->
                                  <FormulateInput
                                   type="submit"
                                   :disabled="isLoading"
@@ -1037,6 +1034,7 @@ export default {
   },
   data() {
       return {
+          resDummyData: [],
           isLoading: true,
           loadSpinner: false,
           services: [],
@@ -1125,7 +1123,7 @@ export default {
               stucco: 'Stucco',
               vinysiding: 'Vinyl Siding',
               paintedwood: 'Painted Wood',
-              stainedwood: 'stainedwood',
+              stainedwood: 'Stained Wood',
               brick: 'Brick',
               stone: 'Stone',
               hardyboard: 'Hardy Board',                              
@@ -1201,14 +1199,18 @@ export default {
   },
   methods: {
       submitHandler() {
-          alert('submitted');
-          console.log(this.form);
-          return;
-        //   axios.post(`/api/quote`, this.form).then((response) => {
-        //       console.log(response);
-        //   }).catch((err) => {
-        //       console.log(err);
-        //   });
+          axios.post(`/api/create_quote`, this.form).then((response) => {
+        
+                this.$store.dispatch('addQuoteFormData', response.data);
+                this.$router.push({ name: 'home', query: {
+                     'hash_id': response.data.quote_id,
+                     'email': response.data.email 
+                }, hash: '#customize'
+                });
+
+          }).catch((err) => {
+              console.log(err);
+          });
       },
       addNewOption(e) {
           e.preventDefault();
@@ -1327,9 +1329,6 @@ export default {
               console.log(err);
           });
       },
-      routeChange() {
-          this.$router.push({ name: 'home' });
-      }
   },
   mounted() {
       this.getAllServices();

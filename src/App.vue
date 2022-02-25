@@ -1,9 +1,5 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/quote">Quote</router-link>
-    </div>
      <router-view />
   </div>
 </template>
@@ -22,6 +18,7 @@ export default {
 
    @import './assets/css/bootstrap/bootstrap.min.css';
    @import './assets/css/style.css';
+   @import './assets/css/responsive.css';
 
 </style>
 

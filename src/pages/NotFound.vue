@@ -1,11 +1,11 @@
 <template>
     <div>
-        HELLO WORLD
+        Not Found
     </div>
 </template>
 
 <script>
 export default {
-    name: 'hello'
+    
 }
 </script>

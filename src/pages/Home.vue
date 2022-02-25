@@ -1,57 +1,11 @@
 <template>
     <div>
-    <!-- HEADER -->
-     <header class="header">
-
-        <!-- LOGO & NAV -->
-        <div class="container">
-            <div class="logo-nav-wrap">
-                <div class="site-logo">
-                    <img src="@/assets/img/logo/logo.png" alt="Trust Tech Logo">
-                </div>
-            </div>
-        </div>
-        <!-- LOGO & NAV ENDS -->
-
-        <!-- CENTER CONTENT -->
-        <div class="header-container container">
-            <div class="center-content">
-                <div class="center-content-inner">
-                    <div class="center-content-head">
-                        <p>614 Slumber Pass, San Antonio, Texas 78260</p>
-                        <h3>Jake’s Personalized Quote</h3>
-                    </div>
-
-                    <div class="center-content-desc">
-                        <p>Let us use our years of experience, skilled employees, and advanced procedures to ensure your
-                            home shines.</p>
-                    </div>
-                    <div class="center-content-btn">
-                        <a href="#pricing" class="btn-head">Go Pricing</a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <!-- CENTER CONTENT ENDS -->
-
-    </header>
-    <!-- HEADER ENDS -->
-
-     <!-- CUSTOMIZE -->
-    <section class="customize">
-        <div class="customize-content-box">
-            <div class="container">
-                <div class="customize-content">
-                    <h3>Customized Services to Brighten Your Home</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- CUSTOMIZE -->
+        
+    <HomeHeader />
+    <HomeCustomize />
 
     <!-- HOUSE PLANS -->
-    <section class="house-plans" id="house-plans">
+    <section id="house-plans" class="house-plans" v-if="getHouseWashData.length > 0">
         <div class="plans-container">
             <div class="plans-head">
                 <h3>House Washing Plans</h3>
@@ -59,91 +13,41 @@
                     tailor a package that meets your particular needs and stays within your budget.</p>
             </div>
 
-            <div class="row">
-                <div class="col-md-6">
+            <div class="row home-row-sm">
+                <div class="col-md-6 mb-3" v-for="item in getHouseWashData" :key="item.id">
                     <!-- PLANS BODY -->
                     <div class="plans-body">
                         <div class="plans-card">
                             <div class="plans-card-head">
-                                <h3>House and windows</h3>
+                                <h3>{{ item.plan_name }}</h3>
                             </div>
                             <div class="plans-card-body">
                                 <div class="plans-price-list">
                                     <div class="plans-price">
                                         <span>$</span>
-                                        <span>727</span>
+                                        <span>{{ item.price_sheet[0]['price'] }}</span>
                                     </div>
                                     <div class="plans-list">
 
-                                        <div class="plans-list-item">
+                                        <div class="plans-list-item" v-for="feature in JSON.parse(item.features)" :key="feature.id">
                                             <div class="plans-list-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
+                                                <svg v-if="feature.status" xmlns="http://www.w3.org/2000/svg" width="23" height="23"
                                                     viewBox="0 0 22 22" fill="none">
                                                     <path
                                                         d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
                                                         fill="#009BE3" />
                                                 </svg>
+                                                <svg v-else xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.47 2 2 6.47 2 12C2 17.53 6.47 22 12 22C17.53 22 22 17.53 22 12C22 6.47 17.53 2 12 2ZM17 15.59L15.59 17L12 13.41L8.41 17L7 15.59L10.59 12L7 8.41L8.41 7L12 10.59L15.59 7L17 8.41L13.41 12L17 15.59Z" fill="#A8A8A8"></path></svg>
                                             </div>
-                                            <p>
-                                                Workers comp and $1 million liability insurance protection
+                                            <p :class="{ 'p-grey': (feature.status) ? false : true }">
+                                                {{ feature.feature }}
                                             </p>
                                         </div>
-                                        <div class="plans-list-item">
-                                            <div class="plans-list-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                    viewBox="0 0 22 22" fill="none">
-                                                    <path
-                                                        d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                        fill="#009BE3" />
-                                                </svg>
-                                            </div>
-                                            <p>
-                                                $5000 satisfaction guarantee
-                                            </p>
-                                        </div>
-                                        <div class="plans-list-item">
-                                            <div class="plans-list-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                    viewBox="0 0 22 22" fill="none">
-                                                    <path
-                                                        d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                        fill="#009BE3" />
-                                                </svg>
-                                            </div>
-                                            <p>
-                                                House exterior cleaning with safewash method
-                                            </p>
-                                        </div>
-                                        <div class="plans-list-item">
-                                            <div class="plans-list-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                    viewBox="0 0 22 22" fill="none">
-                                                    <path
-                                                        d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                        fill="#009BE3" />
-                                                </svg>
-                                            </div>
-                                            <p>
-                                                Treatment to protect all plants and landscape
-                                            </p>
-                                        </div>
-                                        <div class="plans-list-item">
-                                            <div class="plans-list-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                    viewBox="0 0 22 22" fill="none">
-                                                    <path
-                                                        d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                        fill="#009BE3" />
-                                                </svg>
-                                            </div>
-                                            <p>
-                                                Spot free Cleaning of exterior windows
-                                            </p>
-                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="plans-btn">
-                                    <a href="#">Select Plan</a>
+                                    <button @click="addPlan(item, 'house')" :disabled="selectPlanBtn('house', item.id)">Select Plan</button>
                                 </div>
 
                             </div>
@@ -151,97 +55,6 @@
                     </div>
                     <!-- PLANS BODY ENDS -->
 
-                </div>
-                <div class="col-md-6">
-                    <!-- PLANS BODY -->
-                    <div class="plans-body">
-                        <div class="plans-card">
-                            <div class="plans-card-head">
-                                <h3>House Only</h3>
-                            </div>
-                            <div class="plans-card-body">
-                                <div class="plans-price-list">
-                                    <div class="plans-price">
-                                        <span>$</span>
-                                        <span>534</span>
-                                    </div>
-                                    <div class="plans-list">
-
-                                        <div class="plans-list-item">
-                                            <div class="plans-list-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                    viewBox="0 0 22 22" fill="none">
-                                                    <path
-                                                        d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                        fill="#009BE3" />
-                                                </svg>
-                                            </div>
-                                            <p>
-                                                Workers comp and $1 million liability insurance protection
-                                            </p>
-                                        </div>
-                                        <div class="plans-list-item">
-                                            <div class="plans-list-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                    viewBox="0 0 22 22" fill="none">
-                                                    <path
-                                                        d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                        fill="#009BE3" />
-                                                </svg>
-                                            </div>
-                                            <p>
-                                                $5000 satisfaction guarantee
-                                            </p>
-                                        </div>
-                                        <div class="plans-list-item">
-                                            <div class="plans-list-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                    viewBox="0 0 22 22" fill="none">
-                                                    <path
-                                                        d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                        fill="#009BE3" />
-                                                </svg>
-                                            </div>
-                                            <p>
-                                                House exterior cleaning with safewash method
-                                            </p>
-                                        </div>
-                                        <div class="plans-list-item">
-                                            <div class="plans-list-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                    viewBox="0 0 22 22" fill="none">
-                                                    <path
-                                                        d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                        fill="#009BE3" />
-                                                </svg>
-                                            </div>
-                                            <p>
-                                                Treatment to protect all plants and landscape
-                                            </p>
-                                        </div>
-                                        <div class="plans-list-item">
-                                            <div class="plans-list-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none">
-                                                    <path
-                                                        d="M12 2C6.47 2 2 6.47 2 12C2 17.53 6.47 22 12 22C17.53 22 22 17.53 22 12C22 6.47 17.53 2 12 2ZM17 15.59L15.59 17L12 13.41L8.41 17L7 15.59L10.59 12L7 8.41L8.41 7L12 10.59L15.59 7L17 8.41L13.41 12L17 15.59Z"
-                                                        fill="#A8A8A8" />
-                                                </svg>
-                                            </div>
-                                            <p class="p-grey">
-                                                Spot free Cleaning of exterior windows
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="plans-btn">
-                                    <a href="#">Select Plan</a>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- PLANS BODY ENDS -->
                 </div>
             </div>
 
@@ -250,112 +63,48 @@
     <!-- HOUSE PLANS ENDS -->
 
     <!-- ROOF PLANS -->
-    <section class="roof-plans">
+    <section class="roof-plans" v-if="getRoofCleanData.length > 0">
         <div class="roof-plans-box">
             <div class="plans-container">
                 <div class="plans-head">
                     <h3>Roof Treatment Plans</h3>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-6">
+                <div class="row home-row-sm">
+                    <div class="col-md-6 mb-3" v-for="item in getRoofCleanData" :key="item.id">
                         <!-- PLANS BODY -->
                         <div class="plans-body plans-shadow">
                             <div class="plans-card">
                                 <div class="plans-card-head">
-                                    <h3>Roof and windows</h3>
+                                    <h3>{{ item.plan_name }}</h3>
                                 </div>
                                 <div class="plans-card-body">
                                     <div class="plans-price-list">
                                         <div class="plans-price">
                                             <span>$</span>
-                                            <span>911</span>
+                                            <span>{{ item.price_sheet[0]['price'] }}</span>
                                         </div>
                                         <div class="plans-list">
 
-                                            <div class="plans-list-item">
-                                                <div class="plans-list-icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                        viewBox="0 0 22 22" fill="none">
-                                                        <path
-                                                            d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                            fill="#009BE3" />
-                                                    </svg>
-                                                </div>
-                                                <p>
-                                                    Workers comp and $1 million liability insurance protection
-                                                </p>
+                                            <div class="plans-list-item" v-for="feature in JSON.parse(item.features)" :key="feature.id">
+                                            <div class="plans-list-icon">
+                                                <svg v-if="feature.status" xmlns="http://www.w3.org/2000/svg" width="23" height="23"
+                                                    viewBox="0 0 22 22" fill="none">
+                                                    <path
+                                                        d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
+                                                        fill="#009BE3" />
+                                                </svg>
+                                                <svg v-else xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.47 2 2 6.47 2 12C2 17.53 6.47 22 12 22C17.53 22 22 17.53 22 12C22 6.47 17.53 2 12 2ZM17 15.59L15.59 17L12 13.41L8.41 17L7 15.59L10.59 12L7 8.41L8.41 7L12 10.59L15.59 7L17 8.41L13.41 12L17 15.59Z" fill="#A8A8A8"></path></svg>
                                             </div>
-                                            <div class="plans-list-item">
-                                                <div class="plans-list-icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                        viewBox="0 0 22 22" fill="none">
-                                                        <path
-                                                            d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                            fill="#009BE3" />
-                                                    </svg>
-                                                </div>
-                                                <p>
-                                                    $5000 satisfaction guarantee
-                                                </p>
-                                            </div>
-                                            <div class="plans-list-item">
-                                                <div class="plans-list-icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                        viewBox="0 0 22 22" fill="none">
-                                                        <path
-                                                            d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                            fill="#009BE3" />
-                                                    </svg>
-                                                </div>
-                                                <p>
-                                                    Safe soft wash roof cleaning method
-                                                </p>
-                                            </div>
-                                            <div class="plans-list-item">
-                                                <div class="plans-list-icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                        viewBox="0 0 22 22" fill="none">
-                                                        <path
-                                                            d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                            fill="#009BE3" />
-                                                    </svg>
-                                                </div>
-                                                <p>
-                                                    Application of chemicals to destroy all organic growth
-                                                </p>
-                                            </div>
-                                            <div class="plans-list-item">
-                                                <div class="plans-list-icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                        viewBox="0 0 22 22" fill="none">
-                                                        <path
-                                                            d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                            fill="#009BE3" />
-                                                    </svg>
-                                                </div>
-                                                <p>
-                                                    Treatment to protect all plants and landscape
-                                                </p>
-                                            </div>
+                                            <p :class="{ 'p-grey': (feature.status) ? false : true }">
+                                                {{ feature.feature }}
+                                            </p>
+                                             </div>
 
-                                            <div class="plans-list-item">
-                                                <div class="plans-list-icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                        viewBox="0 0 22 22" fill="none">
-                                                        <path
-                                                            d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                            fill="#009BE3" />
-                                                    </svg>
-                                                </div>
-                                                <p>
-                                                    Exterior spot and streak free window cleaning
-                                                </p>
-                                            </div>
                                         </div>
                                     </div>
                                     <div class="plans-btn">
-                                        <a href="#">Select Plan</a>
+                                        <button @click="addPlan(item, 'roof')" :disabled="selectPlanBtn('roof', item.id)">Select Plan</button>
                                     </div>
 
                                 </div>
@@ -363,112 +112,6 @@
                         </div>
                         <!-- PLANS BODY ENDS -->
 
-                    </div>
-                    <div class="col-md-6">
-                        <!-- PLANS BODY -->
-                        <div class="plans-body plans-shadow">
-                            <div class="plans-card">
-                                <div class="plans-card-head">
-                                    <h3>Roof Only</h3>
-                                </div>
-                                <div class="plans-card-body">
-                                    <div class="plans-price-list">
-                                        <div class="plans-price">
-                                            <span>$</span>
-                                            <span>699</span>
-                                        </div>
-                                        <div class="plans-list">
-
-                                            <div class="plans-list-item">
-                                                <div class="plans-list-icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                        viewBox="0 0 22 22" fill="none">
-                                                        <path
-                                                            d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                            fill="#009BE3" />
-                                                    </svg>
-                                                </div>
-                                                <p>
-                                                    Workers comp and $1 million liability insurance protection
-                                                </p>
-                                            </div>
-                                            <div class="plans-list-item">
-                                                <div class="plans-list-icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                        viewBox="0 0 22 22" fill="none">
-                                                        <path
-                                                            d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                            fill="#009BE3" />
-                                                    </svg>
-                                                </div>
-                                                <p>
-                                                    $5000 satisfaction guarantee
-                                                </p>
-                                            </div>
-                                            <div class="plans-list-item">
-                                                <div class="plans-list-icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                        viewBox="0 0 22 22" fill="none">
-                                                        <path
-                                                            d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                            fill="#009BE3" />
-                                                    </svg>
-                                                </div>
-                                                <p>
-                                                    Safe soft wash roof cleaning method
-                                                </p>
-                                            </div>
-                                            <div class="plans-list-item">
-                                                <div class="plans-list-icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                        viewBox="0 0 22 22" fill="none">
-                                                        <path
-                                                            d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                            fill="#009BE3" />
-                                                    </svg>
-                                                </div>
-                                                <p>
-                                                    Application of chemicals to destroy all organic growth
-                                                </p>
-                                            </div>
-                                            <div class="plans-list-item">
-                                                <div class="plans-list-icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                        viewBox="0 0 22 22" fill="none">
-                                                        <path
-                                                            d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                            fill="#009BE3" />
-                                                    </svg>
-                                                </div>
-                                                <p>
-                                                    Treatment to protect all plants and landscape
-                                                </p>
-                                            </div>
-
-                                            <div class="plans-list-item">
-                                                <div class="plans-list-icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none">
-                                                        <path
-                                                            d="M12 2C6.47 2 2 6.47 2 12C2 17.53 6.47 22 12 22C17.53 22 22 17.53 22 12C22 6.47 17.53 2 12 2ZM17 15.59L15.59 17L12 13.41L8.41 17L7 15.59L10.59 12L7 8.41L8.41 7L12 10.59L15.59 7L17 8.41L13.41 12L17 15.59Z"
-                                                            fill="#A8A8A8" />
-                                                    </svg>
-                                                </div>
-                                                <p class="p-grey">
-                                                    Exterior spot and streak free window cleaning
-                                                </p>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="plans-btn">
-                                        <a href="#">Select Plan</a>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- PLANS BODY ENDS -->
                     </div>
                 </div>
 
@@ -478,111 +121,47 @@
     <!-- ROOF PLANS ENDS -->
 
      <!-- DRIVE PLANS -->
-    <section class="drive-plans">
+    <section class="drive-plans" v-if="getDrivewayData.length > 0">
         <div class="plans-container">
             <div class="plans-head">
                 <h3>Driveway, Sidewalk, and Patio Plans</h3>
             </div>
 
-            <div class="row">
-                <div class="col-md-6">
+            <div class="row home-row-sm">
+                <div class="col-md-6 mb-3" v-for="item in getDrivewayData" :key="item.id">
                     <!-- PLANS BODY -->
                     <div class="plans-body">
                         <div class="plans-card">
                             <div class="plans-card-head">
-                                <h3>Deluxe</h3>
+                                <h3>{{ item.plan_name }}</h3>
                             </div>
                             <div class="plans-card-body">
                                 <div class="plans-price-list">
                                     <div class="plans-price">
                                         <span>$</span>
-                                        <span>355</span>
+                                        <span>{{ item.price_sheet[0]['price'] }}</span>
                                     </div>
                                     <div class="plans-list">
 
-                                        <div class="plans-list-item">
+                                          <div class="plans-list-item" v-for="feature in JSON.parse(item.features)" :key="feature.id">
                                             <div class="plans-list-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
+                                                <svg v-if="feature.status" xmlns="http://www.w3.org/2000/svg" width="23" height="23"
                                                     viewBox="0 0 22 22" fill="none">
                                                     <path
                                                         d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
                                                         fill="#009BE3" />
                                                 </svg>
+                                                <svg v-else xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.47 2 2 6.47 2 12C2 17.53 6.47 22 12 22C17.53 22 22 17.53 22 12C22 6.47 17.53 2 12 2ZM17 15.59L15.59 17L12 13.41L8.41 17L7 15.59L10.59 12L7 8.41L8.41 7L12 10.59L15.59 7L17 8.41L13.41 12L17 15.59Z" fill="#A8A8A8"></path></svg>
                                             </div>
-                                            <p>
-                                                Workers comp and $1 million liability insurance protection
+                                            <p :class="{ 'p-grey': (feature.status) ? false : true }">
+                                                {{ feature.feature }}
                                             </p>
-                                        </div>
-                                        <div class="plans-list-item">
-                                            <div class="plans-list-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                    viewBox="0 0 22 22" fill="none">
-                                                    <path
-                                                        d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                        fill="#009BE3" />
-                                                </svg>
                                             </div>
-                                            <p>
-                                                $5000 satisfaction guarantee
-                                            </p>
-                                        </div>
-                                        <div class="plans-list-item">
-                                            <div class="plans-list-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                    viewBox="0 0 22 22" fill="none">
-                                                    <path
-                                                        d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                        fill="#009BE3" />
-                                                </svg>
-                                            </div>
-                                            <p>
-                                                High pressure cleaning of specific surface
-                                            </p>
-                                        </div>
-                                        <div class="plans-list-item">
-                                            <div class="plans-list-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                    viewBox="0 0 22 22" fill="none">
-                                                    <path
-                                                        d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                        fill="#009BE3" />
-                                                </svg>
-                                            </div>
-                                            <p>
-                                                No "Wand Mark" guarantee
-                                            </p>
-                                        </div>
-                                        <div class="plans-list-item">
-                                            <div class="plans-list-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                    viewBox="0 0 22 22" fill="none">
-                                                    <path
-                                                        d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                        fill="#009BE3" />
-                                                </svg>
-                                            </div>
-                                            <p>
-                                                Pre chemical treatment of surface to increase cleaning effectiveness
-                                            </p>
-                                        </div>
-                                        <div class="plans-list-item">
-                                            <div class="plans-list-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                    viewBox="0 0 22 22" fill="none">
-                                                    <path
-                                                        d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                        fill="#009BE3" />
-                                                </svg>
-                                            </div>
-                                            <p>
-                                                Post chemical treatment to eliminate all organic growth and increased
-                                                longivity of clean surface
-                                            </p>
-                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="plans-btn">
-                                    <a href="#">Select Plan</a>
+                                   <button @click="addPlan(item, 'driveway')" :disabled="selectPlanBtn('driveway', item.id)">Select Plan</button>
                                 </div>
 
                             </div>
@@ -590,111 +169,6 @@
                     </div>
                     <!-- PLANS BODY ENDS -->
 
-                </div>
-                <div class="col-md-6">
-                    <!-- PLANS BODY -->
-                    <div class="plans-body">
-                        <div class="plans-card">
-                            <div class="plans-card-head">
-                                <h3>Basic</h3>
-                            </div>
-                            <div class="plans-card-body">
-                                <div class="plans-price-list">
-                                    <div class="plans-price">
-                                        <span>$</span>
-                                        <span>300</span>
-                                    </div>
-                                    <div class="plans-list">
-
-                                        <div class="plans-list-item">
-                                            <div class="plans-list-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                    viewBox="0 0 22 22" fill="none">
-                                                    <path
-                                                        d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                        fill="#009BE3" />
-                                                </svg>
-                                            </div>
-                                            <p>
-                                                Workers comp and $1 million liability insurance protection
-                                            </p>
-                                        </div>
-                                        <div class="plans-list-item">
-                                            <div class="plans-list-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                    viewBox="0 0 22 22" fill="none">
-                                                    <path
-                                                        d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                        fill="#009BE3" />
-                                                </svg>
-                                            </div>
-                                            <p>
-                                                $5000 satisfaction guarantee
-                                            </p>
-                                        </div>
-                                        <div class="plans-list-item">
-                                            <div class="plans-list-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                    viewBox="0 0 22 22" fill="none">
-                                                    <path
-                                                        d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                        fill="#009BE3" />
-                                                </svg>
-                                            </div>
-                                            <p>
-                                                High pressure cleaning of specific surface
-                                            </p>
-                                        </div>
-                                        <div class="plans-list-item">
-                                            <div class="plans-list-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                    viewBox="0 0 22 22" fill="none">
-                                                    <path
-                                                        d="M10.9999 1.83325C5.93992 1.83325 1.83325 5.93992 1.83325 10.9999C1.83325 16.0599 5.93992 20.1666 10.9999 20.1666C16.0599 20.1666 20.1666 16.0599 20.1666 10.9999C20.1666 5.93992 16.0599 1.83325 10.9999 1.83325ZM9.16659 15.5833L4.58325 10.9999L5.87575 9.70742L9.16659 12.9891L16.1241 6.03159L17.4166 7.33325L9.16659 15.5833Z"
-                                                        fill="#009BE3" />
-                                                </svg>
-                                            </div>
-                                            <p>
-                                                No "Wand Mark" gurarantee
-                                            </p>
-                                        </div>
-                                        <div class="plans-list-item">
-                                            <div class="plans-list-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none">
-                                                    <path
-                                                        d="M12 2C6.47 2 2 6.47 2 12C2 17.53 6.47 22 12 22C17.53 22 22 17.53 22 12C22 6.47 17.53 2 12 2ZM17 15.59L15.59 17L12 13.41L8.41 17L7 15.59L10.59 12L7 8.41L8.41 7L12 10.59L15.59 7L17 8.41L13.41 12L17 15.59Z"
-                                                        fill="#A8A8A8" />
-                                                </svg>
-                                            </div>
-                                            <p class="p-grey">
-                                                Pre chemical treatment of surface to increase cleaning effectiveness
-                                            </p>
-                                        </div>
-                                        <div class="plans-list-item">
-                                            <div class="plans-list-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none">
-                                                    <path
-                                                        d="M12 2C6.47 2 2 6.47 2 12C2 17.53 6.47 22 12 22C17.53 22 22 17.53 22 12C22 6.47 17.53 2 12 2ZM17 15.59L15.59 17L12 13.41L8.41 17L7 15.59L10.59 12L7 8.41L8.41 7L12 10.59L15.59 7L17 8.41L13.41 12L17 15.59Z"
-                                                        fill="#A8A8A8" />
-                                                </svg>
-                                            </div>
-                                            <p class="p-grey">
-                                                Post chemical treatment to eliminate all organic growth and increased
-                                                longivity of clean surface
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="plans-btn">
-                                    <a href="#">Select Plan</a>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- PLANS BODY ENDS -->
                 </div>
             </div>
 
@@ -702,94 +176,10 @@
     </section>
     <!-- DRIVE PLANS ENDS -->
 
-     <!-- VISIT -->
-    <section class="visit">
-        <div class="visit-box">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="visit-img">
-                            <img src="@/assets/img/visit/visit-img.png" alt="Visit Image">
-                        </div>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="visit-content">
-                            <div class="visit-content-head">
-                                <h3>About your Visit</h3>
-                            </div>
-                            <div class="visit-content-body">
-                                <p>Your technician will be in uniform, clean, and respectful.</p>
-                                <p>
-                                    The night before your service you will receive a short bio of your technician. The
-                                    day of your visit you will receive a text message that he/she is in route to your
-                                    home and a call when the technician arrives. During your service, please make sure
-                                    all animals are inside, but there is no need to be home. We will send you a picture
-                                    summary of our work and walk you through the job on the phone. After the job
-                                    walkthrough, you will receive an invoice and request for payment.
-                                </p>
-                                <p>
-                                    Thank you for the opportunity to serve you.</p>
-                            </div>
-                            <div class="visit-content-foot">
+    <HomeVisit />
 
-                                <div class="content-foot-info-wrap">
-
-                                    <div class="content-foot-info email">
-                                        <div class="icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
-                                                viewBox="0 0 14 14" fill="none">
-                                                <path
-                                                    d="M1.75008 1.75H12.2501C12.4048 1.75 12.5532 1.81146 12.6626 1.92085C12.772 2.03025 12.8334 2.17862 12.8334 2.33333V11.6667C12.8334 11.8214 12.772 11.9697 12.6626 12.0791C12.5532 12.1885 12.4048 12.25 12.2501 12.25H1.75008C1.59537 12.25 1.447 12.1885 1.3376 12.0791C1.22821 11.9697 1.16675 11.8214 1.16675 11.6667V2.33333C1.16675 2.17862 1.22821 2.03025 1.3376 1.92085C1.447 1.81146 1.59537 1.75 1.75008 1.75ZM7.03508 6.81508L3.29475 3.63883L2.53933 4.52783L7.04267 8.35158L11.4649 4.52492L10.7019 3.64233L7.03567 6.81508H7.03508Z"
-                                                    fill="#219653" />
-                                            </svg>
-                                        </div>
-                                        <div class="text">
-                                            <p>info@gopressurewashing.com</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="content-foot-info phone">
-                                        <div class="icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
-                                                viewBox="0 0 14 14" fill="none">
-                                                <path
-                                                    d="M12.25 9.57833V11.641C12.2501 11.7887 12.1941 11.9309 12.0934 12.0389C11.9927 12.147 11.8548 12.2128 11.7075 12.2232C11.4526 12.2407 11.2443 12.25 11.0833 12.25C5.92842 12.25 1.75 8.07158 1.75 2.91667C1.75 2.75567 1.75875 2.54742 1.77683 2.2925C1.78717 2.14518 1.85301 2.00726 1.96105 1.90657C2.0691 1.80589 2.21131 1.74993 2.359 1.75H4.42167C4.49402 1.74993 4.56382 1.77675 4.61751 1.82526C4.67119 1.87377 4.70493 1.94051 4.71217 2.0125C4.72558 2.14667 4.73783 2.25342 4.7495 2.3345C4.86543 3.14354 5.103 3.9304 5.45417 4.66842C5.50958 4.78508 5.47342 4.9245 5.36842 4.99917L4.10958 5.89867C4.87926 7.6921 6.30849 9.12132 8.10192 9.891L9.00025 8.6345C9.03697 8.58317 9.09054 8.54635 9.15162 8.53046C9.21271 8.51458 9.27743 8.52064 9.3345 8.54758C10.0724 8.89809 10.8591 9.13507 11.6678 9.2505C11.7489 9.26217 11.8557 9.275 11.9887 9.28783C12.0606 9.2952 12.1271 9.329 12.1755 9.38267C12.2239 9.43634 12.2507 9.50607 12.2506 9.57833H12.25Z"
-                                                    fill="#006ABD" />
-                                            </svg>
-                                        </div>
-                                        <div class="text">
-                                            <p>210-724-6026</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="content-foot-disclaimer">
-                                    <div class="icon">
-                                        <img src="@/assets/img/visit/visit-disclaimer.png" alt="Visit Disclaimer">
-                                    </div>
-                                    <div class="text">
-                                        <h3>Disclaimer:</h3>
-                                        <p>Our mission is to be fair on pricing - NOT to bait and switch</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- SHAPE -->
-        <div class="visit-shape">
-            <img src="@/assets/img/visit/shape.png" alt="Shape Image">
-        </div>
-
-    </section>
-    <!-- VISIT ENDS -->
-
-     <!-- CONFIRMATION -->
-    <section class="confirmation">
+    <!-- CONFIRMATION -->
+    <section class="confirmation" v-if="Object.keys(selectedServices).length > 0">
         <div class="container">
             <div class="confirmation-content">
                 <div class="confirmation-head">
@@ -802,133 +192,279 @@
                         <div class="col-5 title">
                             <h3>Category</h3>
                         </div>
-                        <div class="col-4 title">
+                        <div class="col-3 title">
                             <h3>Plan</h3>
                         </div>
-                        <div class="col-3 title">
+                        <div class="col-2 title">
                             <h3>Amount</h3>
+                        </div>
+                        <div class="col-2 title">
+                            <h3>Time <span class="title-min">(minutes)</span></h3>
                         </div>
                     </div>
                     <div class="confirm-content-body">
                         <!-- ITEM 1 -->
-                        <div class="row confirm-content-item">
+                        <div class="row confirm-content-item" v-for="(item,key,index) in selectedServices" :key="index">
                             <div class="col-5 item-category title">
-                                <p>Roof Treatment Plans</p>
+                                <p>
+                                    {{ confirmationListName(key) }}
+                                </p>
                             </div>
-                            <div class="col-4 item-plan title">
-                                <p>Roof and window</p>
+                            <div class="col-3 item-plan title">
+                                <p>{{ item.plan_name }}</p>
                             </div>
-                            <div class="col-3 item-amount title">
-                                <p>$911</p>
+                            <div class="col-2 item-amount title">
+                                <p>${{ item.price_sheet[0].price }}</p>
                             </div>
-                        </div>
-                        <!-- ITEM 2 -->
-                        <div class="row confirm-content-item">
-                            <div class="col-5 item-category title">
-                                <p>Driveway, Sidewalk, and Patio Plans</p>
+
+                            <div class="col-2 item-amout title">
+                                <p>{{ item.price_sheet[0].time }}</p>
                             </div>
-                            <div class="col-4 item-plan title">
-                                <p>Basic</p>
-                            </div>
-                            <div class="col-3 item-amount title">
-                                <p>$300</p>
-                            </div>
+
                         </div>
 
-                        <!-- ITEM 3 -->
                         <div class="row confirm-content-item">
                             <div class="col-5 item-category title">
-                                <p class="p-blue">Two Plus Service Discount of 15%</p>
+                                <p class="p-blue">
+                                     {{ discount.name }}
+                                </p>
                             </div>
-                            <div class="col-4 item-plan title">
+                            <div class="col-3 item-plan title">
                                 <p></p>
                             </div>
-                            <div class="col-3 item-amount title">
-                                <p>($181)</p>
+                            <div class="col-2 item-amount title">
+                                <p>(${{ discount.price }})</p>
                             </div>
                         </div>
 
-                        <!-- ITEM 4 -->
                         <div class="row confirm-content-item">
                             <div class="col-5 item-category title">
                                 <h3 class="h-blue total">Total</h3>
                             </div>
-                            <div class="col-4 item-plan title">
+                            <div class="col-3 item-plan title">
                                 <p></p>
                             </div>
-                            <div class="col-3 item-amount title">
-                                <h3 class="h-blue total">$1,030</h3>
+                            <div class="col-2 item-amount title">
+                                <h3 class="h-blue total">${{ totalPrice }}</h3>
+                            </div>
+                            <div class="col-2 item-amount title">
+                                <p>{{ totalTime }}</p>
                             </div>
                         </div>
 
+                        <!-- PROCEED TO BOOKING -->
+                        <div class="row mt-2">
+                            <div class="ml-auto col-4 col-sm-3 col-md-2">
+                                <button class="proceed-btn" @click="showDialog">Proceed</button>
+                            </div>
+                        </div>
+                        <!-- PROCEED TO BOOKING ENDS -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <div class="container">
+        <div class="schedule-date" v-if="date">
+             <p>Schedule Date: {{ date }}</p>
+        </div>
+        <HomeDialog @emitDate="emitDate" :active="active" @hideDialog="active = false" />
+    </div>
+
      <!-- SIGNATURE -->
-    <section class="signature">
+    <section class="signature" v-if="date">
         <div class="signature-box">
             <div class="container">
                 <div class="signature-content">
                     <p>Please leave your signature below</p>
+                    {{ form }}
+                    <form @submit.prevent="formHandler">
                     <div class="signature-content-inner">
                         <div class="signature-input">
-                            <form action="">
-                                <input type="text" name="">
-                            </form>
+                                <input type="text" name="" v-model.trim="signature">
+                                <p v-if="signatureError" class="signature-error">{{ signatureError }}</p> 
                         </div>
                         <div class="signature-btn">
                             <button>I'm Ready to Schedule</button>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
+    <HomeFooter />
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="nav-icon">
-                <div class="nav">
-                    <ul>
-                        <li><a href="">Home</a></li>
-                        <li><a href="">Services</a></li>
-                        <li><a href="">About us</a></li>
-                        <li><a href="">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="icons">
-                    <div class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path
-                                d="M12 2C14.717 2 15.056 2.01 16.122 2.06C17.187 2.11 17.912 2.277 18.55 2.525C19.21 2.779 19.766 3.123 20.322 3.678C20.8305 4.1779 21.224 4.78259 21.475 5.45C21.722 6.087 21.89 6.813 21.94 7.878C21.987 8.944 22 9.283 22 12C22 14.717 21.99 15.056 21.94 16.122C21.89 17.187 21.722 17.912 21.475 18.55C21.2247 19.2178 20.8311 19.8226 20.322 20.322C19.822 20.8303 19.2173 21.2238 18.55 21.475C17.913 21.722 17.187 21.89 16.122 21.94C15.056 21.987 14.717 22 12 22C9.283 22 8.944 21.99 7.878 21.94C6.813 21.89 6.088 21.722 5.45 21.475C4.78233 21.2245 4.17753 20.8309 3.678 20.322C3.16941 19.8222 2.77593 19.2175 2.525 18.55C2.277 17.913 2.11 17.187 2.06 16.122C2.013 15.056 2 14.717 2 12C2 9.283 2.01 8.944 2.06 7.878C2.11 6.812 2.277 6.088 2.525 5.45C2.77524 4.78218 3.1688 4.17732 3.678 3.678C4.17767 3.16923 4.78243 2.77573 5.45 2.525C6.088 2.277 6.812 2.11 7.878 2.06C8.944 2.013 9.283 2 12 2ZM12 7C10.6739 7 9.40215 7.52678 8.46447 8.46447C7.52678 9.40215 7 10.6739 7 12C7 13.3261 7.52678 14.5979 8.46447 15.5355C9.40215 16.4732 10.6739 17 12 17C13.3261 17 14.5979 16.4732 15.5355 15.5355C16.4732 14.5979 17 13.3261 17 12C17 10.6739 16.4732 9.40215 15.5355 8.46447C14.5979 7.52678 13.3261 7 12 7ZM18.5 6.75C18.5 6.41848 18.3683 6.10054 18.1339 5.86612C17.8995 5.6317 17.5815 5.5 17.25 5.5C16.9185 5.5 16.6005 5.6317 16.3661 5.86612C16.1317 6.10054 16 6.41848 16 6.75C16 7.08152 16.1317 7.39946 16.3661 7.63388C16.6005 7.8683 16.9185 8 17.25 8C17.5815 8 17.8995 7.8683 18.1339 7.63388C18.3683 7.39946 18.5 7.08152 18.5 6.75ZM12 9C12.7956 9 13.5587 9.31607 14.1213 9.87868C14.6839 10.4413 15 11.2044 15 12C15 12.7956 14.6839 13.5587 14.1213 14.1213C13.5587 14.6839 12.7956 15 12 15C11.2044 15 10.4413 14.6839 9.87868 14.1213C9.31607 13.5587 9 12.7956 9 12C9 11.2044 9.31607 10.4413 9.87868 9.87868C10.4413 9.31607 11.2044 9 12 9Z"
-                                fill="white" />
-                        </svg>
-                    </div>
-                    <div class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path
-                                d="M12 2C6.477 2 2 6.477 2 12C2 16.991 5.657 21.128 10.438 21.879V14.89H7.898V12H10.438V9.797C10.438 7.291 11.93 5.907 14.215 5.907C15.309 5.907 16.453 6.102 16.453 6.102V8.562H15.193C13.95 8.562 13.563 9.333 13.563 10.124V12H16.336L15.893 14.89H13.563V21.879C18.343 21.129 22 16.99 22 12C22 6.477 17.523 2 12 2Z"
-                                fill="white" />
-                        </svg>
-                    </div>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>Copyright &copy; 2022 • Go Pressure Washing</p>
-            </div>
-        </div>
-    </footer>
-    <!-- FOOTER ENDS -->
-    
     </div>
 </template>
 
 <script>
+// import DatePicker from 'v-calendar/lib/components/date-picker.umd'
+import HomeHeader from '../components/Home/HomeHeader.vue'
+import HomeCustomize from '../components/Home/HomeCustomize.vue'
+import HomeVisit from '../components/Home/HomeVisit.vue'
+import HomeDialog from '../components/Home/Dialog/HomeDialog.vue'
+import HomeFooter from '../components/Home/HomeFooter.vue'
+import _ from 'lodash';
+import axios from 'axios'
+
 export default {
-    name: 'home'
+    name: 'home',
+    components: {
+        HomeHeader,
+        HomeCustomize,
+        HomeFooter,
+        HomeVisit,
+        HomeDialog
+        // DatePicker
+    },
+    data() {
+        return {
+            date: '',
+            active: false,
+            quoteFormData: [],
+            selectedServices: {},
+            discount: {
+                name: 'Two Plus Service Discount of 15%',
+                price: 20
+            },
+            totalPrice: 0,
+            totalTime: 0,
+            signature: '',
+            signatureError: '',
+            form: ''
+        }
+    },
+    computed: {
+        getHouseWashData() {
+            return this.$store.getters.getHouseWashData;
+        },
+        getRoofCleanData() {
+            return this.$store.getters.getRoofCleanData;
+        },
+        getDrivewayData() {
+            return this.$store.getters.getDrivewayData;
+        }
+    },
+    methods: {
+        formHandler() {
+
+            if(this.signature == '') {
+                this.signatureError = 'Please enter your signature'
+                return;
+            }
+
+            let form = {
+                scheduleDate: this.date,
+                selectedPlans: this.selectedPlansFormattedData(),
+                totalPrice: this.totalPrice,
+                totalTime: this.totalTime,
+                signature: this.signature,
+                quoteId: this.$store.getters.getQuoteId,
+                email: this.$store.getters.getEmail
+            }
+
+            axios.post(`/api/update_quote`, form).then((response) => {
+                if(response.data.status == 200) {
+                    this.$router.push({ name: 'success', query: {
+                        'hash_id': response.data.quote_id,
+                        'email': response.data.email
+                    }});
+                }
+            }).catch((err) => {
+               console.log(err);
+            });
+        },
+        addPlan(feature, type) {
+            if(type == 'house') {
+              this.selectedServices = Object.assign({}, this.selectedServices, { ['house'] : feature});
+
+            } else if(type == 'roof') {
+                this.selectedServices = Object.assign({}, this.selectedServices, { ['roof'] : feature});
+            } else if(type == 'driveway') {
+                this.selectedServices = Object.assign({}, this.selectedServices, { ['driveway'] : feature});
+            }
+            this.calcTotalPrice();
+            this.calcTotalTime();
+        },
+        selectPlanBtn(key, itemId) {
+            if(_.has(this.selectedServices,key)) {
+                return this.selectedServices[key].id == itemId ? true : false
+            }
+           return false;
+        },
+        confirmationListName(key) {
+            if(key == 'house') {
+                return 'House Plans';
+            } else if(key == 'roof') {
+                return 'Roof Treatment Plans';
+            } else if(key == 'driveway') {
+                return 'Driveway, Sidewalk, and Patio Plans';
+            }
+        },
+        calcTotalPrice() {
+            let price = 0;
+
+            _.forOwn(this.selectedServices, function(value) { 
+                price += value.price_sheet[0].price;
+            });
+
+            this.totalPrice = price - this.discount.price;
+        },
+        calcTotalTime() {
+            let time = 0;
+            _.forOwn(this.selectedServices, function(value) {
+                time += parseInt(value.price_sheet[0].time);
+            });
+
+            this.totalTime = time;
+        },
+        selectedPlansFormattedData() {
+            let plansArr = [];
+            _.forOwn(this.selectedServices, function(value) { 
+                plansArr.push(value.id);
+            });
+            return plansArr;
+        },  
+        emitDate(date) {
+            this.date = date 
+        },
+        showDialog() {
+            this.active = true;
+        },
+        getRouteParams() {
+
+            if(_.has(this.$route.query, 'hash_id') && _.has(this.$route.query, 'email')) {
+
+               axios.get('/api/get_quote', {
+                   params: {
+                       'hash_id': this.$route.query.hash_id,
+                       'email': this.$route.query.email
+                   }
+               }).then((response) => {
+
+                   if(response.data.status == 500) {
+                       this.$router.push({ name: 'quote' });
+                   } else if(response.data.quote_status == 3) {
+                       this.$router.push({ name: 'success', query: {
+                           'hash_id': response.data.quote_id,
+                           'email': response.data.email
+                       }});
+                   }
+
+                   this.$store.dispatch('addQuoteFormData', response.data);
+
+               }).catch((err) => {
+                   console.log(err);
+               });
+            } else {
+                this.$router.push({ name: 'quote' });
+            }
+        }
+    },
+    mounted() {
+        this.getRouteParams();
+    }
 }
 </script>

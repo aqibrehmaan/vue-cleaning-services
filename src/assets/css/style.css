@@ -45,17 +45,6 @@ a:hover {
     text-decoration: none;
 }
 
-/* h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: 'Montserrat', sans-serif;
-    ;
-}
-*/
-
 p {
     font-weight: 400;
     margin-bottom: 0;
@@ -63,6 +52,9 @@ p {
 
 /* ===== UTILITY CLASSES =====*/
 
+.quote-mb-1 {
+    margin-bottom: 1rem;
+}
 
 .custom-checkbox input {
     padding: 0;
@@ -339,7 +331,11 @@ p {
     color: #a8a8a8;
 }
 
-.plans-btn a {
+.plans-btn button {
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    border: 0;
     background: #006ABD;
     text-align: center;
     padding: 0.5rem 0;
@@ -351,6 +347,17 @@ p {
     -moz-border-radius: 6px;
     -ms-border-radius: 6px;
     -o-border-radius: 6px;
+}
+
+.plans-btn button:focus {
+    outline: 0;
+}
+
+.plans-btn button[disabled]:active,
+.plans-btn button[disabled] {
+    cursor: not-allowed;
+    pointer-events: none;
+    background: #ccc !important;
 }
 
 .plans-shadow {
@@ -556,6 +563,12 @@ p {
     padding: 1rem;
 }
 
+.confirm-content-head .title .title-min {
+    font-size: 0.9rem;
+    color: #626262;
+    font-weight: 400;
+}
+
 .confirmation-body .title {
     font-size: 0.9rem;
     padding-left: 2rem;
@@ -567,6 +580,7 @@ p {
     color: #505050;
     margin: 0;
 }
+
 
 .confirm-content-body .confirm-content-item {
     padding: 1rem;
@@ -592,6 +606,23 @@ p {
     font-size: 1.5rem;
 }
 
+.proceed-btn {
+    background-color: #006abd;
+    color: #fff;
+    border: 0;
+    border-radius: 3px;
+    padding: 0.3rem 0.7rem;
+    cursor: pointer;
+}
+
+.proceed-btn:focus {
+    outline: 0;
+}
+
+.schedule-date {
+    margin-top: 1rem;
+}
+
 /* =============================================
                    SIGNATURE
    ============================================= */
@@ -614,11 +645,8 @@ p {
     margin-right: 0.7rem;
 }
 
-.signature-content-inner .signature-input form {
-    height: 100%;
-}
-
 .signature-content-inner .signature-input input {
+    padding: 0 1rem;
     width: 100%;
     border: 1px solid #a8a8a8;
     background-color: #f9f9f9;
@@ -628,6 +656,12 @@ p {
     -ms-border-radius: 6px;
     -o-border-radius: 6px;
     height: 100%;
+}
+
+.signature-input .signature-error {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #e72525 !important;
 }
 
 .signature-content-inner .signature-input input:focus {
@@ -647,6 +681,7 @@ p {
     color: #fff;
     font-size: 0.9rem;
     font-weight: 300;
+    cursor: pointer;
 }
 
 /* =============================================
@@ -1068,4 +1103,64 @@ p {
 
 .get-quote-inner .get-quote-btn button:focus {
     outline: 0;
+}
+
+
+/* =======================================================
+                        MODALS
+   ======================================================= */
+
+.dialog {
+    background-color: #afbfcc;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 100%;
+    transition: all 0.5s;
+    transform: translateX(500px);
+    -webkit-transform: translateX(500px);
+    -moz-transform: translateX(500px);
+    -ms-transform: translateX(500px);
+    -o-transform: translateX(500px);
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+}
+
+.dialog.active {
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+}
+
+.dialog .dialog-icon-wrap {
+    margin: 1rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.dialog .dialog-close-icon {
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+.dialog .dialog-date {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog .dialog-date p {
+    margin-bottom: 1rem;
 }
